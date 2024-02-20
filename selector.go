@@ -213,6 +213,7 @@ type tagSelector struct {
 
 // Matches elements with a given tag name.
 func (t tagSelector) Match(n *html.Node) bool {
+	// PJS - mod to allow a RE match on tag
 	return n.Type == html.ElementNode && n.Data == t.tag
 }
 
@@ -348,7 +349,7 @@ func matchInclude(val string, s string, ignoreCase bool) bool {
 	return false
 }
 
-//  matches elements where the attribute named key equals val or starts with val plus a hyphen.
+// matches elements where the attribute named key equals val or starts with val plus a hyphen.
 func attributeDashMatch(key, val string, n *html.Node, ignoreCase bool) bool {
 	return matchAttribute(n, key,
 		func(s string) bool {
